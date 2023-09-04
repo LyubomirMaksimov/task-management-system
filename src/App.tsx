@@ -6,6 +6,8 @@ import Home from "./pages/Home";
 import TicketsLayout from "./pages/TicketsLayout";
 import Login from "./pages/Login";
 import Statistics from "./pages/Statistics";
+import AuthGuard from "./guard/AuthGuard";
+import NotificationsList from "./components/Notifications/NotificationsList";
 
 const App: React.FC = () => {
   const [darkTheme, setDarkTheme] = useState(true);
@@ -13,17 +15,42 @@ const App: React.FC = () => {
   const activeTheme = darkTheme ? "" : "light-mode";
 
   return (
-    <div className={`${styles.app} ${styles[activeTheme]}`}>
-      <NavBar darkTheme={darkTheme} changeTheme={setDarkTheme} />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/tickets" element={<TicketsLayout />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/statistics" element={<Statistics />} />
-        <Route path="/tickets/:id" element={<Home />} />
-      </Routes>
-      <div className={styles.containers}></div>
-    </div>
+    <>
+      <NotificationsList />
+      <main className={`${styles.app} ${styles[activeTheme]}`}>
+        <NavBar darkTheme={darkTheme} changeTheme={setDarkTheme} />
+        <Routes>
+          <Route path="/" element={<Home />} />
+
+          <Route
+            path="/tickets"
+            element={
+              <AuthGuard>
+                <TicketsLayout />
+              </AuthGuard>
+            }
+          />
+          <Route path="/login" element={<Login />} />
+          <Route
+            path="/statistics"
+            element={
+              <AuthGuard>
+                <Statistics />
+              </AuthGuard>
+            }
+          />
+          <Route
+            path="/tickets/:id"
+            element={
+              <AuthGuard>
+                <TicketsLayout />
+              </AuthGuard>
+            }
+          />
+        </Routes>
+        <div className={styles.containers}></div>
+      </main>
+    </>
   );
 };
 

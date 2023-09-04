@@ -30,7 +30,7 @@ const useFetch = ({ stringService, flag, params }: FetchProps) => {
     }
   };
 
-  const fetchData = () => {
+  const fetchData = async () => {
     setLoading(true);
     setError(null);
     setData(null);
@@ -43,7 +43,7 @@ const useFetch = ({ stringService, flag, params }: FetchProps) => {
 
     switch (stringService) {
       case "LOGIN":
-        user
+        await user
           .login(params[0], params[1], abortControllerRef.current.signal)
           .then((jsonData: UserRequestData) => {
             clearTimeout(timeoutId);

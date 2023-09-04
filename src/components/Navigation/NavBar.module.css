@@ -20,6 +20,11 @@
   height: 100%;
 }
 
+.logo img,
+p {
+  cursor: pointer;
+}
+
 .logo p {
   font-size: 18px;
   color: var(--text-color);

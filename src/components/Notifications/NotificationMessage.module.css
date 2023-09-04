@@ -1,0 +1,68 @@
+.notification {
+  padding: 1.5rem 2rem;
+  border-radius: 1rem;
+  text-align: center;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  opacity: 1;
+  z-index: 9;
+  background-color: #a9a9a9;
+  border: 0.25rem solid #808080;
+}
+
+.notification::after {
+  background-color: #808080;
+}
+
+.notification.success {
+  background-color: #90ee90;
+  border: 0.25rem solid #008000;
+}
+
+.notification.success::after {
+  background-color: #008000;
+}
+
+.notification.error {
+  background-color: #ffcccb;
+  border: 0.25rem solid #ff0000;
+}
+
+.notification.error::after {
+  background-color: #ff0000;
+}
+
+.notification .message {
+  color: #ffffff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin: 0;
+  position: relative;
+  z-index: 5;
+}
+
+.notification::after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  inset: 0 0 0 auto;
+  z-index: 4;
+  opacity: 1;
+  animation-name: expire;
+  animation-duration: 7s;
+  animation-delay: 0.5s;
+  animation-iteration-count: 1;
+  animation-timing-function: linear;
+}
+
+@keyframes expire {
+  from {
+    width: 100%;
+  }
+  to {
+    width: 0%;
+  }
+}
