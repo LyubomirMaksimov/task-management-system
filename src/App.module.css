@@ -1,0 +1,11 @@
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.light-mode {
+  --primary-color: #ffffff;
+  --background-color: #f4f7fd;
+  --text-color: #000112;
+}

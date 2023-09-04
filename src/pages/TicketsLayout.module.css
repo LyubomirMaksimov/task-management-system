@@ -1,0 +1,41 @@
+.container {
+  display: flex;
+  flex: 1;
+  background-color: var(--primary-color);
+  transition: margin-left 1s ease;
+}
+
+.toggleBar {
+  position: absolute;
+  display: flex;
+  background-color: var(--purple-color);
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+  width: 56px;
+  border-top-right-radius: 100px;
+  border-bottom-right-radius: 100px;
+  top: 848px;
+  left: 0px;
+  transition: left 0.5s ease;
+}
+
+.toggleBar:hover {
+  cursor: pointer;
+  background-color: var(--purple-hover-color);
+}
+
+.hidetoggleBar {
+  position: absolute;
+  display: flex;
+  background-color: var(--purple-color);
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+  width: 56px;
+  border-top-right-radius: 100px;
+  border-bottom-right-radius: 100px;
+  top: 848px;
+  left: -56px;
+  transition: left 0.5s ease;
+}

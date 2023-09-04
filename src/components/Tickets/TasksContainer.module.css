@@ -1,0 +1,4 @@
+.taskcontainer {
+  flex: 1;
+  background-color: var(--background-color);
+}

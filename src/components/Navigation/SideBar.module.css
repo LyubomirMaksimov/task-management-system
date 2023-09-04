@@ -1,0 +1,94 @@
+.sidebar {
+  width: 300px;
+  background-color: var(--primary-color);
+  border-right: 2px solid #3e3f4e;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  transform: translateX(0px);
+}
+
+.hidesidebar {
+  transform: translateX(-300px);
+}
+
+.filter-container {
+  width: 100%;
+  margin-left: 32px;
+  flex: 1;
+}
+
+.filtertitle {
+  font-weight: bold;
+  color: var(--text-color);
+}
+
+.filter {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.filter p {
+  margin-left: 16px;
+  color: var(--text-color);
+}
+
+.switch-mode {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--background-color);
+  padding: 6px 65px;
+  border-radius: 6px;
+}
+
+.switch-mode img {
+  margin: 0px;
+}
+
+.switch-mode p {
+  margin: 0px;
+  margin-left: 24px;
+  margin-right: 24px;
+}
+
+.switch {
+  padding: 0px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.hide-sidebar {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+  margin-bottom: 32px;
+  width: 95%;
+  align-self: start;
+}
+
+.hide-sidebar img {
+  margin-left: 20px;
+  color: red;
+  fill: red;
+}
+
+.hide-sidebar p {
+  margin-left: 15px;
+  color: var(--text-color);
+}
+
+.hide-sidebar:hover {
+  cursor: pointer;
+  color: var(--purple-color);
+  background-color: var(--purple-hover-color);
+  border-top-right-radius: 100px;
+  border-bottom-right-radius: 100px;
+  font-weight: bold;
+}
+
+.hide-sidebar:hover p {
+  color: var(--purple-color);
+}
