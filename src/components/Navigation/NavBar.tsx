@@ -8,6 +8,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "../../app/Store";
 import { useDispatch } from "react-redux";
 import { logout } from "../../features/userSlice";
+import { addNotification } from "../../features/notificationSlice";
 
 interface NavBarProps {
   darkTheme: boolean;
@@ -27,6 +28,13 @@ const NavBar: React.FC<NavBarProps> = ({ darkTheme, changeTheme }) => {
 
   const logoutHandler = () => {
     dispatch(logout());
+    dispatch(
+      addNotification({
+        id: new Date().getTime(),
+        message: "User Logged Out",
+        type: "success",
+      })
+    );
     navigate("/");
   };
 

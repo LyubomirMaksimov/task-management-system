@@ -1,13 +1,16 @@
 import { useState, useEffect, useRef } from "react";
 import user from "../services/authService.js";
 import { UserRequestData } from "../types/user.js";
+import { RequestTicketsData } from "../types/ticket.js";
+
+import ticket from "../services/ticketService.js";
 // import { SERVICES } from "../utils/servicesDictionary.ts";
 
 export interface FetchProps {
   stringService: string;
   flag: boolean;
-  params: [string, string];
-  data: UserRequestData | null;
+  params: (number | string)[];
+  data: RequestTicketsData | UserRequestData | null;
   loading: boolean;
   error: Error | null;
   fetchData: () => void;
@@ -15,7 +18,9 @@ export interface FetchProps {
 }
 
 const useFetch = ({ stringService, flag, params }: FetchProps) => {
-  const [data, setData] = useState<UserRequestData | null>(null);
+  const [data, setData] = useState<RequestTicketsData | UserRequestData | null>(
+    null
+  );
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<Error | null>(null);
 
@@ -39,17 +44,54 @@ const useFetch = ({ stringService, flag, params }: FetchProps) => {
 
     const timeoutId = setTimeout(() => {
       abortFetch();
-    }, 10000);
+    }, 60000);
 
     switch (stringService) {
       case "LOGIN":
         await user
-          .login(params[0], params[1], abortControllerRef.current.signal)
+          .login(
+            String(params[0]),
+            String(params[1]),
+            abortControllerRef.current.signal
+          )
           .then((jsonData: UserRequestData) => {
             clearTimeout(timeoutId);
 
             if (jsonData) {
-              setData(jsonData);
+              setData(jsonData as UserRequestData);
+            } else {
+              throw new Error("Invalid response data");
+            }
+
+            setLoading(false);
+          })
+          .catch((error: Error) => {
+            clearTimeout(timeoutId);
+
+            if (error.name === "AbortError") {
+              console.log("Fetch aborted");
+            } else {
+              console.error("Error fetching data:", error);
+              setLoading(false);
+              setError(error);
+            }
+          });
+        break;
+
+      case "GETALLTICKETS":
+        await ticket
+          .getAllTickets(
+            Number(params[0]),
+            Number(params[1]),
+            Number(params[2]),
+            String(params[3]),
+            abortControllerRef.current.signal
+          )
+          .then((jsonData: RequestTicketsData) => {
+            clearTimeout(timeoutId);
+
+            if (jsonData) {
+              setData(jsonData as RequestTicketsData);
             } else {
               throw new Error("Invalid response data");
             }

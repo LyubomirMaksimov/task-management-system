@@ -50,6 +50,7 @@ p {
   padding: 15px 25px;
   border-radius: 24px;
   background-color: var(--purple-color);
+  color: white;
 }
 
 .loginlink:hover {

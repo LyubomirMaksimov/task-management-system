@@ -1,5 +1,3 @@
-// shouldRerender.ts
-
 interface NotificationMessageProps {
   notifMessage?: string;
   notifType?: string;

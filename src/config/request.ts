@@ -13,6 +13,7 @@ export const req = {
 
 export const url = {
   AUTH_LOGIN: `${req.API_URL}/account/login`,
+  TICKET_GETTICKETS: `${req.API_URL}/returnTickets`,
 };
 
 export const fetchData = (url: string, options = {}) => {

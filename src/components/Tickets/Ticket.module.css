@@ -1,0 +1,16 @@
+.tickerWrapper {
+  background-color: var(--primary-color);
+  border-radius: 15px;
+  padding: 10px;
+  border: 0.05rem solid #80808065;
+}
+
+.tickerWrapper p {
+  margin: 0px;
+  color: var(--text-color);
+}
+
+.tickerWrapper h3 {
+  margin: 0px;
+  color: var(--text-color);
+}

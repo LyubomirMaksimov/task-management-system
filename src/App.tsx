@@ -8,6 +8,7 @@ import Login from "./pages/Login";
 import Statistics from "./pages/Statistics";
 import AuthGuard from "./guard/AuthGuard";
 import NotificationsList from "./components/Notifications/NotificationsList";
+import PageNotFound from "./pages/PageNotFound";
 
 const App: React.FC = () => {
   const [darkTheme, setDarkTheme] = useState(true);
@@ -47,6 +48,7 @@ const App: React.FC = () => {
               </AuthGuard>
             }
           />
+          <Route path="*" element={<PageNotFound />} />
         </Routes>
         <div className={styles.containers}></div>
       </main>
