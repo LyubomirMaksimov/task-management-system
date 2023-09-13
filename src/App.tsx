@@ -9,6 +9,7 @@ import Statistics from "./pages/Statistics";
 import AuthGuard from "./guard/AuthGuard";
 import NotificationsList from "./components/Notifications/NotificationsList";
 import PageNotFound from "./pages/PageNotFound";
+import TicketDetailsPage from "./pages/TicketDetailsPage";
 
 const App: React.FC = () => {
   const [darkTheme, setDarkTheme] = useState(true);
@@ -41,10 +42,10 @@ const App: React.FC = () => {
             }
           />
           <Route
-            path="/tickets/:id"
+            path="/tickets/:cobjTicket"
             element={
               <AuthGuard>
-                <TicketsLayout />
+                <TicketDetailsPage />
               </AuthGuard>
             }
           />

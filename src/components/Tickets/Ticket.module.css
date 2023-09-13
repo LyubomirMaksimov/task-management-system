@@ -6,11 +6,29 @@
 }
 
 .tickerWrapper p {
+  font-size: 15px;
   margin: 0px;
-  color: var(--text-color);
 }
 
 .tickerWrapper h3 {
+  font-size: 18px;
   margin: 0px;
   color: var(--text-color);
+  padding-bottom: 5px;
+  cursor: pointer;
+}
+
+.tickerWrapper h3:hover {
+  color: var(--purple-hover-color);
+}
+
+.tickerWrapper button {
+  margin-top: 10px;
+  font-size: 15px;
+  font-weight: bold;
+  padding: 10px;
+}
+
+.info {
+  display: flex;
 }

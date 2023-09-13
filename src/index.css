@@ -6,7 +6,7 @@ body {
 
   --primary-color: #2b2c37;
   --background-color: #20212c;
-  --text-color: #ffffff; */
+  --text-color: #ffffff;
 
   --paragraph-color: #828fa3;
 
@@ -16,7 +16,6 @@ body {
   --red-color: #ea5555;
   --red-hover-color: #ff9898;
 }
-
 
 p {
   color: var(--paragraph-color);
