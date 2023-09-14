@@ -1,8 +1,8 @@
 .container {
-    position: absolute;
-    inset: 7.25rem 3rem auto auto;
-    width: 30%;
-    display: flex;
-    gap: 1rem;
-    flex-direction: column;
+  position: absolute;
+  inset: 0.75rem 1rem auto 20rem;
+  width: 30%;
+  display: flex;
+  gap: 1rem;
+  /* flex-direction: column; */
 }

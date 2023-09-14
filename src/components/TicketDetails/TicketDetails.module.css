@@ -1,8 +1,7 @@
 .container {
   background-color: var(--primary-color);
   border-radius: 15px;
-  padding: 10px;
-  border: 0.05rem solid #80808065;
+  padding: 20px;
 }
 
 .container p {

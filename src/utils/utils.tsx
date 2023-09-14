@@ -1,4 +1,4 @@
-export const returnStatusName = (ticketStatus) => {
+export const returnStatusName = (ticketStatus: number) => {
   switch (ticketStatus) {
     case 1:
       return "Очаква приемане";

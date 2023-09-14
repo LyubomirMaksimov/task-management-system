@@ -28,10 +28,6 @@ const TicketDetailsPage: React.FC = () => {
   const { ticketDetailsData, error } = useTicketDetails(objRequest);
 
   useEffect(() => {
-    if (ticketDetailsData) {
-      console.log(ticketDetailsData);
-    }
-
     if (error) {
       dispatch(
         addNotification({
@@ -44,11 +40,18 @@ const TicketDetailsPage: React.FC = () => {
   }, [error, ticketDetailsData, dispatch]);
 
   return (
-    <div className={styles.detailsContainer}>
-      <TicketDetails />
-      <TicketOtchet />
-      <TicketHelpers />
-    </div>
+    <>
+      {ticketDetailsData && (
+        <div className={styles.detailsContainer}>
+          <TicketDetails ticket={ticketDetailsData} />
+          {ticketDetailsData?.helpers.length > 0 && (
+            <TicketHelpers helpers={ticketDetailsData?.helpers} />
+          )}
+          <TicketOtchet otcheti={ticketDetailsData?.otcheti} />
+        </div>
+      )}
+      {!ticketDetailsData && <div>Something Went Wrong</div>}
+    </>
   );
 };
 

@@ -15,23 +15,43 @@
 
 .filter-container {
   width: 100%;
-  margin-left: 32px;
   flex: 1;
 }
 
 .filtertitle {
   font-weight: bold;
-  color: var(--text-color);
+  color: var(--paragraph-color);
+  margin: 15px;
 }
 
 .filter {
   display: flex;
   align-items: center;
   text-decoration: none;
+  padding: 14px 5px;
+  width: 90%;
+}
+
+.filter:hover {
+  cursor: pointer;
+  color: var(--purple-color);
+  background-color: var(--purple-hover-color);
+  border-top-right-radius: 100px;
+  border-bottom-right-radius: 100px;
+  font-weight: bold;
+}
+
+.filter:hover {
+  background-color: var(--purple-color);
+}
+
+.filter img {
+  margin-left: 16px;
 }
 
 .filter p {
   margin-left: 16px;
+  font-weight: bold;
   color: var(--text-color);
 }
 
@@ -63,6 +83,8 @@
 .hide-sidebar {
   display: flex;
   align-items: center;
+  padding-top: 15px;
+  padding-bottom: 15px;
   margin-top: 10px;
   margin-bottom: 32px;
   width: 95%;
