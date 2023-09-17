@@ -19,6 +19,12 @@ body {
 
   --red-color: #ea5555;
   --red-hover-color: #ff9898;
+
+  --yellow-color: #dab44e;
+  --yellow-hover-color: #cfc19a;
+
+  --green-color: #53b839;
+  --green-hover-color: #93c287;
 }
 
 p {

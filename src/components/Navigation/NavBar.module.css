@@ -4,11 +4,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 2px solid #3e3f4e;
-}
-
-.active {
-  color: var(--purple-color);
+  border-bottom: 1px solid var(--paragraph-color);
 }
 
 .logo {
@@ -20,13 +16,13 @@
   height: 100%;
 }
 
-.logo img,
-p {
+.logo {
   cursor: pointer;
 }
 
 .logo p {
   font-size: 18px;
+  cursor: pointer;
   color: var(--text-color);
 }
 
@@ -43,7 +39,7 @@ p {
 .links a {
   text-decoration: none;
   font-size: 18px;
-  color: var(--text-color);
+  /* color: var(--text-color); */
 }
 
 .loginlink {
@@ -59,4 +55,11 @@ p {
 
 .modeChange {
   margin-right: 20px;
+}
+
+.active {
+  color: var(--purple-color);
+}
+.active:hover {
+  color: var(--purple-hover-color);
 }

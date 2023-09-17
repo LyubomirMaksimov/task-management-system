@@ -50,7 +50,9 @@ const TicketDetailsPage: React.FC = () => {
           <TicketOtchet otcheti={ticketDetailsData?.otcheti} />
         </div>
       )}
-      {!ticketDetailsData && <div>Something Went Wrong</div>}
+      {!ticketDetailsData && (
+        <div className={styles.detailsContainer}>Something Went Wrong</div>
+      )}
     </>
   );
 };

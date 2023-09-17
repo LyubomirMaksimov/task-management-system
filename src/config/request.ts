@@ -26,8 +26,8 @@ export const fetchData = (url: string, options = {}) => {
     }
 
     if (resp.status !== 200) {
-      return resp.text().then((text) => {
-        throw new Error(text);
+      return resp.json().then((text) => {
+        throw new Error(`Error: ${text.error}`);
       });
     }
 

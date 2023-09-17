@@ -2,16 +2,58 @@
   background-color: var(--primary-color);
   border-radius: 15px;
   padding: 20px;
+  max-height: 680px;
 }
 
 .container p {
   font-size: 15px;
-  margin: 0px;
+  margin-bottom: 10px;
 }
 
 .container h3 {
+  text-align: center;
+}
+
+.container h2,
+h3 {
   font-size: 18px;
-  margin: 0px;
   color: var(--text-color);
   padding-bottom: 5px;
+}
+
+.location {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.location p {
+  margin: 0px;
+}
+
+.directionLogo {
+  margin-left: 10px;
+  height: 30px;
+  cursor: pointer;
+}
+
+.phoneDeal {
+  text-decoration: underline;
+  cursor: pointer;
+  color: var(--purple-color);
+}
+
+.phoneDeal:hover {
+  color: var(--purple-hover-color);
+}
+
+hr {
+  background-color: var(--paragraph-color);
+  height: 2px;
+  border: none;
+  margin: 20px 0px;
+}
+
+p span {
+  color: var(--text-color);
 }

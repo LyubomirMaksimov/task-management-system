@@ -66,10 +66,7 @@ const useTicket = ({ flag, params }: useTicketProps) => {
       .catch((error: Error) => {
         clearTimeout(timeoutId);
 
-        if (
-          error.message ===
-          `"{"error":"Неуспешна Аутентикация на потребителя!"}"`
-        ) {
+        if (error.message === "Error: Неуспешна Аутентикация на потребителя!") {
           return dispatch(logout());
         }
 

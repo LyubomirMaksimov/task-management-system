@@ -1,14 +1,32 @@
-.taskcontainer {
+.container {
   flex: 1;
   background-color: var(--background-color);
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  align-content: space-between;
+}
+
+.taskcontainer {
+  flex: 1;
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 10px;
-  padding: 10px;
+  align-content: start;
+}
+
+.notTickets {
+  color: var(--text-color);
 }
 
 @media (max-width: 1020px) {
   .taskcontainer {
     grid-template-columns: 1fr;
   }
+}
+
+.pageNavContainer {
+  display: flex;
+  padding: 10px;
+  justify-content: center;
 }

@@ -1,5 +1,6 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import userReducer from "../features/userSlice";
+import activeTicketReducer from "../features/ticketSlice";
 import notificationReducer from "../features/notificationSlice";
 import { persistStore, persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
@@ -13,6 +14,7 @@ const persistedReducer = persistReducer(
   persistConfig,
   combineReducers({
     user: userReducer,
+    activeTicket: activeTicketReducer,
     notifications: notificationReducer,
   })
 );

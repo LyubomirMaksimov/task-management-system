@@ -1,7 +1,7 @@
 .sidebar {
   width: 300px;
   background-color: var(--primary-color);
-  border-right: 2px solid #3e3f4e;
+  border-right: 1px solid var(--paragraph-color);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -39,10 +39,6 @@
   border-top-right-radius: 100px;
   border-bottom-right-radius: 100px;
   font-weight: bold;
-}
-
-.filter:hover {
-  background-color: var(--purple-color);
 }
 
 .filter img {
@@ -93,8 +89,6 @@
 
 .hide-sidebar img {
   margin-left: 20px;
-  color: red;
-  fill: red;
 }
 
 .hide-sidebar p {
@@ -113,4 +107,22 @@
 
 .hide-sidebar:hover p {
   color: var(--purple-color);
+}
+
+.activeFilter {
+  background-color: var(--purple-color);
+  border-top-right-radius: 100px;
+  border-bottom-right-radius: 100px;
+}
+
+.activeTicket {
+  background-color: var(--green-color);
+  border-top-right-radius: 100px;
+  border-bottom-right-radius: 100px;
+  margin-bottom: 20px;
+  width: 75%;
+}
+
+.activeTicket:hover {
+  background-color: var(--green-hover-color);
 }

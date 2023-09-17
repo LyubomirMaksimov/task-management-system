@@ -1,0 +1,30 @@
+button {
+  font-size: 15px;
+  font-weight: bold;
+  padding: 10px;
+  border-radius: 5px;
+  margin-right: 20px;
+}
+
+.RedButton {
+  background-color: var(--red-color);
+}
+.RedButton:hover {
+  background-color: var(--red-hover-color);
+}
+
+.YellowButton {
+  background-color: var(--yellow-color);
+}
+
+.YellowButton:hover {
+  background-color: var(--yellow-hover-color);
+}
+
+.GreenButton {
+  background-color: var(--green-color);
+}
+
+.GreenButton:hover {
+  background-color: var(--green-hover-color);
+}

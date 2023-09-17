@@ -57,9 +57,28 @@ const NavBar: React.FC<NavBarProps> = ({ darkTheme, changeTheme }) => {
         </p>
       </div>
       <div className={styles.links}>
-        <NavLink to="/">Home</NavLink>
-        {isAuthenticated && <NavLink to="/tickets">Tickets</NavLink>}
-        {isAuthenticated && <NavLink to="/statistics">Statistics</NavLink>}
+        <NavLink
+          to="/"
+          className={({ isActive }) => (isActive ? `${styles.active}` : "")}
+        >
+          Home
+        </NavLink>
+        {isAuthenticated && (
+          <NavLink
+            to="/tickets"
+            className={({ isActive }) => (isActive ? `${styles.active}` : "")}
+          >
+            Tickets
+          </NavLink>
+        )}
+        {isAuthenticated && (
+          <NavLink
+            to="/statistics"
+            className={({ isActive }) => (isActive ? `${styles.active}` : "")}
+          >
+            Statistics
+          </NavLink>
+        )}
         {isAuthenticated && (
           <p className={styles.loginlink} onClick={logoutHandler}>
             Log Out
