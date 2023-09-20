@@ -6,7 +6,7 @@ import { RootState } from "../app/Store";
 import useTicketDetails from "../hooks/useTicketDetails";
 import { useParams } from "react-router-dom";
 import { addNotification } from "../features/notificationSlice";
-import TicketOtchet from "../components/TicketDetails/TicketOtchet";
+import TicketOtchet from "../components/Otchet/TicketOtchet";
 import TicketHelpers from "../components/TicketDetails/TicketHelpers";
 import TicketDetails from "../components/TicketDetails/TicketDetails";
 
@@ -47,7 +47,10 @@ const TicketDetailsPage: React.FC = () => {
           {ticketDetailsData?.helpers.length > 0 && (
             <TicketHelpers helpers={ticketDetailsData?.helpers} />
           )}
-          <TicketOtchet otcheti={ticketDetailsData?.otcheti} />
+          <TicketOtchet
+            otcheti={ticketDetailsData?.otcheti}
+            cobjTicket={ticketDetailsData.cobjTicket}
+          />
         </div>
       )}
       {!ticketDetailsData && (

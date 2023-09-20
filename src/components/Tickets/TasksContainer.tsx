@@ -69,7 +69,9 @@ const TasksContainer: React.FC = () => {
             return <Ticket key={ticket.id} ticket={ticket} />;
           })}
         {Number(ticketsData?.brTickets) === 0 && (
-          <h1 className={styles.notTickets}>Няма намерени тикети</h1>
+          <h1 className={styles.notTickets}>
+            Не са открити тикети от този вид
+          </h1>
         )}
       </div>
       {ticketsData?.brTickets && (

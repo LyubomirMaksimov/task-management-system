@@ -14,30 +14,62 @@ const TicketHelpers: React.FC<TicketHelpersProps> = ({ helpers }) => {
       <h3>Помощници</h3>
       <br />
 
-      {helpers.map((helper) => {
-        return (
-          <div key={helper.nHelperRow}>
-            <p>
-              <span>{helper.nHelperName}</span>
-            </p>
-            <p>
-              задача: <span>{helper.helperTask}</span>
-            </p>
-            <p>
-              краен срок: <span>{helper.helperTaskEndDate}</span>
-            </p>
-            {helper.helperTaskSumTime !== "0 мин." && (
-              <p> изработено: {helper.helperTaskSumTime}</p>
-            )}
+      <div className={styles.helperscontainer}>
+        {helpers.map((helper) => {
+          return (
+            <div key={helper.nHelperRow}>
+              <p>
+                <span>{helper.nHelperName}</span>
+              </p>
+              <p>
+                задача: <span>{helper.helperTask}</span>
+              </p>
+              <p>
+                краен срок: <span>{helper.helperTaskEndDate}</span>
+              </p>
+              {helper.helperTaskSumTime !== "0 мин." && (
+                <p> изработено: {helper.helperTaskSumTime}</p>
+              )}
 
-            <p>
-              статус: <span>{returnStatusName(helper.helperTaskStatus)}</span>
-            </p>
-            <ButtonsContainer type={2} ticketStatus={helper.helperTaskStatus} />
-            <hr />
-          </div>
-        );
-      })}
+              <p>
+                статус: <span>{returnStatusName(helper.helperTaskStatus)}</span>
+              </p>
+              <ButtonsContainer
+                type={2}
+                ticketStatus={helper.helperTaskStatus}
+              />
+              <hr />
+            </div>
+          );
+        })}
+        {helpers.map((helper) => {
+          return (
+            <div key={helper.nHelperRow}>
+              <p>
+                <span>{helper.nHelperName}</span>
+              </p>
+              <p>
+                задача: <span>{helper.helperTask}</span>
+              </p>
+              <p>
+                краен срок: <span>{helper.helperTaskEndDate}</span>
+              </p>
+              {helper.helperTaskSumTime !== "0 мин." && (
+                <p> изработено: {helper.helperTaskSumTime}</p>
+              )}
+
+              <p>
+                статус: <span>{returnStatusName(helper.helperTaskStatus)}</span>
+              </p>
+              <ButtonsContainer
+                type={2}
+                ticketStatus={helper.helperTaskStatus}
+              />
+              <hr />
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 };

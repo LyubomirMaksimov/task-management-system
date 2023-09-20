@@ -17,9 +17,12 @@
 
 .notTickets {
   color: var(--text-color);
+  justify-self: center;
+  align-self: center;
+  padding: 20px;
 }
 
-@media (max-width: 1020px) {
+@media (max-width: 1080px) {
   .taskcontainer {
     grid-template-columns: 1fr;
   }

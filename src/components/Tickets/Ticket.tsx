@@ -22,6 +22,7 @@ const Ticket: React.FC<ticketProps> = ({ ticket }) => {
       <br />
       <p>статус: {ticket.ticketStatus}</p>
       <p>начало: {ticket.ticketBegDate}</p>
+      <br />
     </div>
   );
 };
