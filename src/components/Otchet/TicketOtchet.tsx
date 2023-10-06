@@ -28,7 +28,7 @@ const TicketOtchet: React.FC<TicketOtchetProps> = ({ otcheti, cobjTicket }) => {
             setShowModal(true);
           }}
         >
-          Отчети друго
+          Създай друг вид отчет
         </button>
         {cobjTicket === activeTicket.cobjTicket && (
           <button>Приключи работа</button>
@@ -41,30 +41,12 @@ const TicketOtchet: React.FC<TicketOtchetProps> = ({ otcheti, cobjTicket }) => {
           setShow={setShowModal}
           addOtchet={AddOtchetHandler}
         />
-      </div>{" "}
+      </div>
+      <h3>Отчет на моята работа</h3>
       <div className={styles.otcheti}>
         {currOtchet.length > 0 ? (
           <div className={styles.container}>
-            <h3>Отчет на моята работа</h3>
             <br />
-            {currOtchet.map((otchet) => {
-              return (
-                <div key={otchet.otchetID}>
-                  <p>
-                    дата: <span>{otchet.otchetDate}</span>
-                  </p>
-                  <p>
-                    описание: <span>{otchet.otchetText}</span>
-                  </p>
-                  {otchet.otchetTime !== "0 мин." && (
-                    <p>
-                      продължителност: <span>{otchet.otchetTime}</span>
-                    </p>
-                  )}
-                  <hr />
-                </div>
-              );
-            })}
             {currOtchet.map((otchet) => {
               return (
                 <div key={otchet.otchetID}>

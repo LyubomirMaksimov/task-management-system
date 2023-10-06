@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import ReactDOM from "react-dom";
 import styles from "./CreateOtchet.module.css";
 import { otchet } from "../../types/ticket";
@@ -9,15 +9,30 @@ interface ConfirmButtonModalProps {
   addOtchet: (newOtcher: otchet) => void;
 }
 
+function formatDateTimeAsDDMMYYYYHHmm(date) {
+  const day = String(date.getDate()).padStart(2, "0");
+  const month = String(date.getMonth() + 1).padStart(2, "0");
+  const year = date.getFullYear();
+  const hours = String(date.getHours()).padStart(2, "0");
+  const minutes = String(date.getMinutes()).padStart(2, "0");
+
+  return `${day}.${month}.${year} ${hours}:${minutes}`;
+}
+
 const ConfirmButtonModal: React.FC<ConfirmButtonModalProps> = ({
   show,
   setShow,
   addOtchet,
 }) => {
-  const [work, setWork] = useState("");
+  const [work, setWork] = useState<string>("");
   const timeRef = useRef<number>(0);
+  const [character, setCharacter] = useState<number>(0);
 
-  const [character, setCharacter] = useState<number>(1);
+  useEffect(() => {
+    setWork("");
+    setCharacter(0);
+  }, [show]);
+
   if (!show) return null;
 
   const GoBackHandler = () => {
@@ -29,7 +44,7 @@ const ConfirmButtonModal: React.FC<ConfirmButtonModalProps> = ({
 
     const newOtchet: otchet = {
       otchetID: Math.ceil(Math.random() * 100),
-      otchetDate: new Date().toString(),
+      otchetDate: formatDateTimeAsDDMMYYYYHHmm(new Date()),
       otchetText: work,
       otchetTime: `${timeValue} мин.`,
       otchetCharacter: character,
@@ -52,6 +67,7 @@ const ConfirmButtonModal: React.FC<ConfirmButtonModalProps> = ({
           minLength={1}
           className="textarea-ticket"
         ></textarea>
+
         <p>Работено време(мин.)</p>
         <input type="number" ref={timeRef} />
         <p>Характериситка:</p>
