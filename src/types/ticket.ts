@@ -2,6 +2,7 @@ export interface ticketBasicInfo {
   id: number;
   nomID: number;
   cobjUniqueRow: number;
+  cobjTicketUser: number;
   cobjTicket: number;
   EIK: string;
   contragent: string;

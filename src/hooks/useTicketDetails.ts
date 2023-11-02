@@ -47,7 +47,8 @@ const useTicketDetails = ({ flag, params }: useTicketDetailsProps) => {
       .getTicketDetails(
         Number(params[0]),
         Number(params[1]),
-        String(params[2]),
+        Number(params[2]),
+        String(params[3]),
         abortControllerRef.current.signal
       )
       .then((jsonData) => {

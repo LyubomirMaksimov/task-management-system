@@ -14,9 +14,6 @@
   width: 300px;
   justify-content: space-evenly;
   height: 100%;
-}
-
-.logo {
   cursor: pointer;
 }
 
@@ -24,6 +21,7 @@
   font-size: 18px;
   cursor: pointer;
   color: var(--text-color);
+  display: flex;
 }
 
 .links {
@@ -62,4 +60,37 @@
 }
 .active:hover {
   color: var(--purple-hover-color);
+}
+
+.hamburger {
+  display: none;
+  cursor: pointer;
+  align-self: right;
+}
+
+.hamburger svg {
+  height: 35px;
+  width: 35px;
+  fill: var(--purple-color);
+}
+
+.hamburger svg:hover {
+  fill: var(--purple-hover-color);
+}
+
+@media (max-width: 800px) {
+  .links {
+    display: none;
+  }
+  .modeChange {
+    display: none;
+  }
+
+  .hamburger {
+    display: inherit;
+    margin-right: 20px;
+  }
+  .navbar {
+    /* justify-content: end; */
+  }
 }

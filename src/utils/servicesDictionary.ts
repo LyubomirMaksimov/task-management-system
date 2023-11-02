@@ -1,20 +1,18 @@
+import auth from "../services/authService.ts";
+import { UserType } from "../types/user.ts";
 
-// import auth from "../services/authService.ts";
-// import { UserType } from "../types/user.ts";
+interface IDictionary {
+  [index: string]: Promise<UserType>;
+}
 
-// interface IDictionary {
-//   [index: string]: Promise<any>;
-// }
+export const SERVICES: IDictionary = {
+  LOGIN: auth.login,
+};
 
-// export const SERVICES: IDictionary= {
-//     "LOGIN": auth.login,
-// };
+const SERVICE_NAMES: IDictionary = {};
 
-// const SERVICE_NAMES: IDictionary = {};
+Object.keys(SERVICES).forEach((key: string) => {
+  SERVICE_NAMES[key.toLowerCase()] = SERVICES[key];
+});
 
-// Object.keys(SERVICES).forEach((key: string) => {
-//   SERVICE_NAMES[key.toLowerCase()] = SERVICES[key];
-// });
-
-// export default SERVICE_NAMES;
-
+export default SERVICE_NAMES;

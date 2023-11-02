@@ -5,6 +5,7 @@ import { UserType } from "../types/user";
 const initialState: UserType = {
   nUser: 0,
   userType: 0,
+  userWorkerType: 0,
   userFullName: "",
   userBULSTAT: "",
   userEmail: "",
@@ -19,8 +20,6 @@ export const userSlice = createSlice({
   initialState,
   reducers: {
     login: (state, action: PayloadAction<UserType>) => {
-      console.log(action.payload);
-
       return {
         ...state,
         ...action.payload,

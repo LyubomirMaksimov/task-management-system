@@ -24,6 +24,7 @@ const ticket = {
   },
   getTicketDetails: (
     nUser: number,
+    nTicketUser: number,
     cobjTicket: number,
     accToken: string,
     signal: AbortSignal
@@ -36,6 +37,7 @@ const ticket = {
       },
       body: JSON.stringify({
         nUser,
+        nTicketUser,
         cobjTicket,
       }),
       signal: signal,

@@ -52,3 +52,20 @@
   height: auto;
   transform: rotate(10deg);
 }
+
+@media (max-width: 775px) {
+  .hero {
+    flex-direction: column;
+  }
+
+  .heroContent {
+    order: 2;
+    width: 90%;
+  }
+
+  .heroImage {
+    margin: auto;
+    width: 90%;
+    order: 1;
+  }
+}

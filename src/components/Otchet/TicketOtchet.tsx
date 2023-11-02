@@ -20,6 +20,7 @@ const TicketOtchet: React.FC<TicketOtchetProps> = ({ otcheti, cobjTicket }) => {
       return [...prev, newOtchet];
     });
   };
+
   return (
     <div className={styles.container}>
       <div className={styles.createOtchet}>

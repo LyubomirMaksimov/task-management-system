@@ -12,7 +12,7 @@ const Ticket: React.FC<ticketProps> = ({ ticket }) => {
   const navigate = useNavigate();
 
   const showticketDetailsHandler = () => {
-    return navigate(`/tickets/${ticket.cobjTicket}`);
+    return navigate(`/tickets/${ticket.cobjTicketUser}-${ticket.cobjTicket}`);
   };
 
   return (

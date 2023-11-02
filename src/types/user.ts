@@ -5,6 +5,7 @@ export interface UserRequestData {
   userFirstName: string;
   userSecondName: string;
   userLastName: string;
+  userWorkerType: number;
   userBULSTAT: string;
   userFirmName: string;
   userEmail: string;
@@ -17,6 +18,7 @@ export interface UserType {
   nUser: number;
   userType: number;
   userFullName: string;
+  userWorkerType: number;
   userBULSTAT: string;
   userEmail: string;
   accToken: string;

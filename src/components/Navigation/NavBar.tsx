@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./NavBar.module.css";
 import TMSLogo from "../../assets/logo-mobile.svg";
 import { NavLink, useNavigate } from "react-router-dom";
@@ -9,6 +9,8 @@ import { RootState } from "../../app/Store";
 import { useDispatch } from "react-redux";
 import { logout } from "../../features/userSlice";
 import { addNotification } from "../../features/notificationSlice";
+import { GiHamburgerMenu } from "react-icons/gi";
+import MobileMenu from "./MobileMenu";
 
 interface NavBarProps {
   darkTheme: boolean;
@@ -16,6 +18,7 @@ interface NavBarProps {
 }
 
 const NavBar: React.FC<NavBarProps> = ({ darkTheme, changeTheme }) => {
+  const [showModal, setShowModal] = useState<boolean>(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const isAuthenticated = useSelector(
@@ -56,6 +59,7 @@ const NavBar: React.FC<NavBarProps> = ({ darkTheme, changeTheme }) => {
           Task Management System
         </p>
       </div>
+
       <div className={styles.links}>
         <NavLink
           to="/"
@@ -97,6 +101,14 @@ const NavBar: React.FC<NavBarProps> = ({ darkTheme, changeTheme }) => {
           <img src={imgDark} alt="dark" />
         )}
       </div>
+      <div className={styles.hamburger}>
+        <GiHamburgerMenu
+          onClick={() => {
+            setShowModal(true);
+          }}
+        />
+      </div>
+      <MobileMenu show={showModal} setShow={setShowModal} />
     </div>
   );
 };

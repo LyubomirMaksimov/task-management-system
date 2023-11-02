@@ -12,12 +12,17 @@ import TicketDetails from "../components/TicketDetails/TicketDetails";
 
 const TicketDetailsPage: React.FC = () => {
   const user = useSelector((state: RootState) => state.user);
-  const { cobjTicket } = useParams();
+  const { id } = useParams();
   const dispatch = useDispatch();
 
   const objRequest: useTicketDetailsProps = {
     flag: true,
-    params: [user.nUser, cobjTicket as string, user.accToken],
+    params: [
+      user.nUser,
+      id?.split("-")[0] as string,
+      id?.split("-")[1] as string,
+      user.accToken,
+    ],
     ticketsData: null,
     loading: true,
     error: null,

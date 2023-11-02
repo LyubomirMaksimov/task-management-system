@@ -4,7 +4,6 @@ import { UserRequestData } from "../types/user.js";
 import { RequestTicketsData } from "../types/ticket.js";
 
 import ticket from "../services/ticketService.js";
-// import { SERVICES } from "../utils/servicesDictionary.ts";
 
 export interface FetchProps {
   stringService: string;

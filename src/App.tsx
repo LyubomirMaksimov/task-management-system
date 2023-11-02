@@ -42,7 +42,7 @@ const App: React.FC = () => {
             }
           />
           <Route
-            path="/tickets/:cobjTicket"
+            path="/tickets/:id"
             element={
               <AuthGuard>
                 <TicketDetailsPage />

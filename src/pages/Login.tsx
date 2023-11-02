@@ -76,6 +76,7 @@ const Login: React.FC = () => {
       const userData: UserType = {
         nUser: data.nUser,
         userType: data.userType,
+        userWorkerType: data.userWorkerType,
         userFullName: fullName,
         userBULSTAT: data.userBULSTAT,
         userEmail: data.userEmail,

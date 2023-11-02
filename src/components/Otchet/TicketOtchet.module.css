@@ -38,3 +38,7 @@ hr {
 .createOtchet {
   margin: 20px 10px;
 }
+
+.createOtchet button {
+  margin: 5px;
+}
