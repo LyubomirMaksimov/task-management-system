@@ -1,11 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
-import { ticketBasicInfo } from "../types/ticket";
+import { ticketBasicInfo } from "../../modules/ticket/types/ticket";
 
 const initialState: ticketBasicInfo = {
   id: 0,
   nomID: 0,
   cobjUniqueRow: 0,
+  cobjTicketUser: 0,
   cobjTicket: 0,
   EIK: "",
   contragent: "",

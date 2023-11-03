@@ -1,5 +1,5 @@
 import React from "react";
-import { ticketType } from "../../types/ticket";
+import { ticketType } from "../types/ticket";
 import styles from "./Ticket.module.css";
 import { useNavigate } from "react-router-dom";
 

@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./TicketHelpers.module.css";
 import { helper } from "../../types/ticket";
 import { returnStatusName } from "../../utils/utils";
-import ButtonsContainer from "../Buttons/ButtonContainer";
+import ButtonsContainer from "../../../../components/Buttons/ButtonContainer";
 
 interface TicketHelpersProps {
   helpers: helper[];

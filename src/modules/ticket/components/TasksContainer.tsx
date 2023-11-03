@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import styles from "./TasksContainer.module.css";
 import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "../../app/Store";
-import useTicket, { useTicketProps } from "../../hooks/useTicket";
-import { addNotification } from "../../features/notificationSlice";
-import { update } from "../../features/ticketSlice";
+import { RootState } from "../../../app/Store";
+import useTicket, { useTicketProps } from "../hooks/useTicket";
+import { addNotification } from "../../../app/features/notificationSlice";
+import { update } from "../../../app/features/ticketSlice";
 import Ticket from "./Ticket";
 import { useLocation } from "react-router-dom";
-import PageNavigation from "../Navigation/PageNavigation";
+import PageNavigation from "../../../components/Navigation/PageNavigation";
 
 const TasksContainer: React.FC = () => {
   const dispatch = useDispatch();

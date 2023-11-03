@@ -1,4 +1,4 @@
-import { req, url, fetchData } from "../config/request";
+import { req, url, fetchData } from "../../../config/request";
 import { UserType } from "../types/user";
 
 const auth = {

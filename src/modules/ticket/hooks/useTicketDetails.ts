@@ -1,23 +1,22 @@
 import { useState, useEffect, useRef } from "react";
-import { RequestTicketsData } from "../types/ticket.js";
+import { ticketFullInfo } from "../types/ticket.js";
 import ticket from "../services/ticketService.js";
 import { useDispatch } from "react-redux";
-import { logout } from "../features/userSlice.js";
+import { logout } from "../../../app/features/userSlice.js";
 
-export interface useTicketProps {
+export interface useTicketDetailsProps {
   flag: boolean;
   params: (number | string)[];
-  ticketsData: RequestTicketsData | null;
+  ticketsData: ticketFullInfo | null;
   loading: boolean;
   error: Error | null;
-  fetchAllTickets: () => void;
+  fetchTicketDetails: () => void;
   abortFetch: () => void;
 }
 
-const useTicket = ({ flag, params }: useTicketProps) => {
-  const [ticketsData, setTicketsData] = useState<RequestTicketsData | null>(
-    null
-  );
+const useTicketDetails = ({ flag, params }: useTicketDetailsProps) => {
+  const [ticketDetailsData, setTicketDetailsData] =
+    useState<ticketFullInfo | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<Error | null>(null);
   const dispatch = useDispatch();
@@ -29,14 +28,14 @@ const useTicket = ({ flag, params }: useTicketProps) => {
       abortControllerRef.current.abort();
       setLoading(false);
       setError(new Error("Request aborted"));
-      setTicketsData(null);
+      setTicketDetailsData(null);
     }
   };
 
-  const fetchAllTickets = async () => {
+  const fetchTicketDetails = async () => {
     setLoading(true);
     setError(null);
-    setTicketsData(null);
+    setTicketDetailsData(null);
 
     abortControllerRef.current = new AbortController();
 
@@ -45,18 +44,20 @@ const useTicket = ({ flag, params }: useTicketProps) => {
     }, 60000);
 
     await ticket
-      .getAllTickets(
+      .getTicketDetails(
         Number(params[0]),
         Number(params[1]),
         Number(params[2]),
         String(params[3]),
         abortControllerRef.current.signal
       )
-      .then((jsonData: RequestTicketsData) => {
+      .then((jsonData) => {
         clearTimeout(timeoutId);
 
-        if (jsonData) {
-          setTicketsData(jsonData as RequestTicketsData);
+        const { ticket } = { ...jsonData };
+
+        if (ticket) {
+          setTicketDetailsData(ticket);
         } else {
           throw new Error("Invalid response data");
         }
@@ -66,7 +67,10 @@ const useTicket = ({ flag, params }: useTicketProps) => {
       .catch((error: Error) => {
         clearTimeout(timeoutId);
 
-        if (error.message === "Error: Неуспешна Аутентикация на потребителя!") {
+        if (
+          error.message ===
+          `"{"error":"Неуспешна Аутентикация на потребителя!"}"`
+        ) {
           return dispatch(logout());
         }
 
@@ -82,7 +86,7 @@ const useTicket = ({ flag, params }: useTicketProps) => {
 
   useEffect(() => {
     if (flag) {
-      fetchAllTickets();
+      fetchTicketDetails();
     }
 
     return () => {
@@ -90,7 +94,7 @@ const useTicket = ({ flag, params }: useTicketProps) => {
     };
   }, []);
 
-  return { ticketsData, loading, error, fetchAllTickets, abortFetch };
+  return { ticketDetailsData, loading, error, fetchTicketDetails, abortFetch };
 };
 
-export default useTicket;
+export default useTicketDetails;

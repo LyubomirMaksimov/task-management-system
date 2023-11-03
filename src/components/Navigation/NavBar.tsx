@@ -7,8 +7,8 @@ import imgDark from "../../assets/icon-dark-theme.svg";
 import { useSelector } from "react-redux";
 import { RootState } from "../../app/Store";
 import { useDispatch } from "react-redux";
-import { logout } from "../../features/userSlice";
-import { addNotification } from "../../features/notificationSlice";
+import { logout } from "../../app/features/userSlice";
+import { addNotification } from "../../app/features/notificationSlice";
 import { GiHamburgerMenu } from "react-icons/gi";
 import MobileMenu from "./MobileMenu";
 

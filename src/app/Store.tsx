@@ -1,8 +1,8 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 
-import userReducer from "../features/userSlice";
-import activeTicketReducer from "../features/ticketSlice";
-import notificationReducer from "../features/notificationSlice";
+import userReducer from "./features/userSlice";
+import activeTicketReducer from "./features/ticketSlice";
+import notificationReducer from "./features/notificationSlice";
 import {
   persistStore,
   persistReducer,

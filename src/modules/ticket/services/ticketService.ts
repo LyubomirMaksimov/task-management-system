@@ -1,4 +1,4 @@
-import { req, url, fetchData } from "../config/request";
+import { req, url, fetchData } from "../../../config/request";
 
 const ticket = {
   getAllTickets: (

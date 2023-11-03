@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import styles from "./Login.module.css";
-import useFetch, { FetchProps } from "../hooks/useFetch.js";
+import useAuth, { FetchProps } from "../modules/user/hooks/useAuth.js";
 import { useDispatch } from "react-redux";
-import { login } from "../features/userSlice.js";
-import { UserType } from "../types/user.js";
+import { login } from "../app/features/userSlice.js";
+import { UserType } from "../modules/user/types/user.js";
 import { useNavigate } from "react-router-dom";
-import { addNotification } from "../features/notificationSlice";
+import { addNotification } from "../app/features/notificationSlice.js";
 
 const Login: React.FC = () => {
   const [username, setUsername] = useState("");
@@ -26,7 +26,7 @@ const Login: React.FC = () => {
     abortFetch: () => {},
   };
 
-  const { data, error, loading, fetchData } = useFetch(objRequest);
+  const { data, error, loading, fetchData } = useAuth(objRequest);
 
   const handleUsernameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setUsername(event.target.value);

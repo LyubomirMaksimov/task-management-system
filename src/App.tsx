@@ -3,7 +3,7 @@ import NavBar from "./components/Navigation/NavBar";
 import styles from "./App.module.css";
 import { Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
-import TicketsLayout from "./pages/TicketsLayout";
+import TicketsDashboard from "./pages/TicketsDashboard";
 import Login from "./pages/Login";
 import Statistics from "./pages/Statistics";
 import AuthGuard from "./guard/AuthGuard";
@@ -28,7 +28,7 @@ const App: React.FC = () => {
             path="/tickets"
             element={
               <AuthGuard>
-                <TicketsLayout />
+                <TicketsDashboard />
               </AuthGuard>
             }
           />

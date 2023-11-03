@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import TasksContainer from "../components/Tickets/TasksContainer";
+import TasksContainer from "../modules/ticket/components/TasksContainer";
 import Sidebar from "../components/Navigation/SideBar";
-import styles from "./TicketsLayout.module.css";
+import styles from "./TicketsDashboard.module.css";
 import imgShow from "../assets/icon-show-sidebar.svg";
 
-const TicketsLayout: React.FC = () => {
+const TicketsDashboard: React.FC = () => {
   const [showSidebar, setShowSideBar] = useState(false);
 
   const toggleSideBar = () => {
@@ -28,4 +28,4 @@ const TicketsLayout: React.FC = () => {
   );
 };
 
-export default TicketsLayout;
+export default TicketsDashboard;

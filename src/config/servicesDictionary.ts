@@ -1,5 +1,5 @@
-import auth from "../services/authService.ts";
-import { UserType } from "../types/user.ts";
+import auth from "../modules/user/services/authService.ts";
+import { UserType } from "../modules/user/types/user.ts";
 
 interface IDictionary {
   [index: string]: Promise<UserType>;

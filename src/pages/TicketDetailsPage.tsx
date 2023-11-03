@@ -1,14 +1,14 @@
 import React, { useEffect } from "react";
 import styles from "./TicketDetailsPage.module.css";
-import { useTicketDetailsProps } from "../hooks/useTicketDetails";
+import { useTicketDetailsProps } from "../modules/ticket/hooks/useTicketDetails";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../app/Store";
-import useTicketDetails from "../hooks/useTicketDetails";
+import useTicketDetails from "../modules/ticket/hooks/useTicketDetails";
 import { useParams } from "react-router-dom";
-import { addNotification } from "../features/notificationSlice";
-import TicketOtchet from "../components/Otchet/TicketOtchet";
-import TicketHelpers from "../components/TicketDetails/TicketHelpers";
-import TicketDetails from "../components/TicketDetails/TicketDetails";
+import { addNotification } from "../app/features/notificationSlice";
+import TicketOtchet from "../modules/ticket/components/Otchet/TicketOtchet";
+import TicketHelpers from "../modules/ticket/components/TicketDetails/TicketHelpers";
+import TicketDetails from "../modules/ticket/components/TicketDetails/TicketDetails";
 
 const TicketDetailsPage: React.FC = () => {
   const user = useSelector((state: RootState) => state.user);

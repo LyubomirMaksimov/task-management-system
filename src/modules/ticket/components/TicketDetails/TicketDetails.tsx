@@ -1,9 +1,9 @@
 import React from "react";
 import styles from "./TicketDetails.module.css";
-import { ticketFullInfo } from "../../types/ticket";
+import { ticketFullInfo } from "../../types/ticket.ts";
 import { returnStatusName } from "../../utils/utils.tsx";
-import directionLogo from "../../assets/DirectionLogo.png";
-import ButtonsContainer from "../Buttons/ButtonContainer.tsx";
+import directionLogo from "../../../../assets/DirectionLogo.png";
+import ButtonsContainer from "../../../../components/Buttons/ButtonContainer.tsx";
 
 interface TicketDetailsProps {
   ticket: ticketFullInfo;

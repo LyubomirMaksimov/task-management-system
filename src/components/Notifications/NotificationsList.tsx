@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import NotificationMessage from "./NotificationMessage";
-import { removeNotification } from "../../features/notificationSlice";
+import { removeNotification } from "../../app/features/notificationSlice";
 import { RootState } from "../../app/Store";
 import style from "./NotificationsList.module.css";
 
