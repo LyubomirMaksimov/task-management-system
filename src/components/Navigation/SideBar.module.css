@@ -126,3 +126,9 @@
 .activeTicket:hover {
   background-color: var(--green-hover-color);
 }
+
+@media (max-width: 800px) {
+  .sidebar {
+    display: none;
+  }
+}

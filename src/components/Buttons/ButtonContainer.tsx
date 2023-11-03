@@ -202,7 +202,7 @@ const ButtonsContainer: React.FC<ButtonsContainerProps> = ({
   }
 
   return (
-    <div className="buttons-container">
+    <div className={styles[`buttons-container`]}>
       {buttons &&
         buttons.map((btn) => {
           return btn;

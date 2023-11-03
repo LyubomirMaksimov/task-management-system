@@ -71,12 +71,14 @@ const TicketDetails: React.FC<TicketDetailsProps> = ({ ticket }) => {
         <p>
           местоположение: <span>{ticket?.ticketPMSPlaceLocation}</span>
         </p>
-        <img
-          className={styles.directionLogo}
-          src={directionLogo}
-          alt="google-map-icon"
-          onClick={GoogleMapsHandler}
-        />
+        {ticket?.ticketPMSPlaceLocation && (
+          <img
+            className={styles.directionLogo}
+            src={directionLogo}
+            alt="google-map-icon"
+            onClick={GoogleMapsHandler}
+          />
+        )}
       </div>
 
       <p>

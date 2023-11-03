@@ -14,7 +14,14 @@
   width: 300px;
   justify-content: space-evenly;
   height: 100%;
+}
+
+.logo img {
   cursor: pointer;
+}
+
+.logo p:hover {
+  color: var(--purple-hover-color);
 }
 
 .logo p {
@@ -37,7 +44,14 @@
 .links a {
   text-decoration: none;
   font-size: 18px;
-  /* color: var(--text-color); */
+}
+
+.active {
+  color: var(--purple-color);
+}
+
+.active:hover {
+  color: var(--purple-hover-color);
 }
 
 .loginlink {
@@ -53,13 +67,6 @@
 
 .modeChange {
   margin-right: 20px;
-}
-
-.active {
-  color: var(--purple-color);
-}
-.active:hover {
-  color: var(--purple-hover-color);
 }
 
 .hamburger {

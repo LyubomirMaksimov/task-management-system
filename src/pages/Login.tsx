@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import styles from "./Login.module.css";
 import useAuth, { FetchProps } from "../modules/user/hooks/useAuth.js";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { login } from "../app/features/userSlice.js";
 import { UserType } from "../modules/user/types/user.js";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Navigate } from "react-router-dom";
 import { addNotification } from "../app/features/notificationSlice.js";
+import { RootState } from "../app/Store.js";
 
 const Login: React.FC = () => {
   const [username, setUsername] = useState("");
@@ -14,6 +15,12 @@ const Login: React.FC = () => {
   const [passwordError, setPasswordError] = useState("");
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  const user = useSelector((state: RootState) => state.user);
+
+  if (user.isAuthenticated) {
+    return <Navigate to="/tickets" />;
+  }
 
   const objRequest: FetchProps = {
     stringService: "LOGIN",
@@ -87,7 +94,7 @@ const Login: React.FC = () => {
       };
 
       dispatch(login(userData));
-      navigate("/");
+      navigate("/tickets");
       dispatch(
         addNotification({
           id: new Date().getTime(),

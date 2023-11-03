@@ -5,7 +5,12 @@
 }
 
 .light-mode {
-  --primary-color: #ffffff;
-  --background-color: #f4f7fd;
+  /*Origiran Colors
+  /* --primary-color: #ffffff;
+  --background-color: #f4f7fd; */
+
+  --primary-color: #f3f3f3;
+  --background-color: rgb(210, 214, 219);
+
   --text-color: #000112;
 }

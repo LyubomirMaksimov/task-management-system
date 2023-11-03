@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import styles from "./TicketOtchet.module.css";
-import { otchet } from "../../types/ticket";
+import { otchet } from "../../../types/ticket";
 import { useSelector } from "react-redux";
-import { RootState } from "../../../../app/Store";
+import { RootState } from "../../../../../app/Store";
 import CreateOtchet from "./CreateOtchet";
 
 interface TicketOtchetProps {

@@ -1,8 +1,8 @@
 .container {
+  flex: 1;
   background-color: var(--primary-color);
   border-radius: 15px;
   padding: 20px;
-  flex: 1;
   max-height: calc(100vh - 170px);
 }
 
@@ -25,11 +25,4 @@ h3 {
   font-size: 18px;
   color: var(--text-color);
   padding-bottom: 5px;
-}
-
-hr {
-  background-color: var(--paragraph-color);
-  height: 2px;
-  border: none;
-  margin: 20px 0px;
 }

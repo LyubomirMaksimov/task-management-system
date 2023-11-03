@@ -32,5 +32,12 @@ p {
 }
 
 a {
-  color: white;
+  color: var(--text-color);
+}
+
+hr {
+  background-color: var(--paragraph-color);
+  height: 2px;
+  border: none;
+  margin: 15px 0px;
 }

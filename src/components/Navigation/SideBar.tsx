@@ -97,7 +97,7 @@ const Sidebar: React.FC<SideBarProps> = ({ showSideBar, toggleSideBar }) => {
         {/* <ImgHide /> */}
         <p>Hide Sidebar</p>
       </div>
-      <div className={styles["settings-container"]}></div>
+      {/* <div className={styles["settings-container"]}></div> */}
     </div>
   );
 };

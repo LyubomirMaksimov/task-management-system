@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import ReactDOM from "react-dom";
 import styles from "./CreateOtchet.module.css";
-import { otchet } from "../../types/ticket";
+import { otchet } from "../../../types/ticket";
 
 interface ConfirmButtonModalProps {
   show: boolean;
