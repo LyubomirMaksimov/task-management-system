@@ -43,7 +43,7 @@ const TicketOtchet: React.FC<TicketOtchetProps> = ({ otcheti, cobjTicket }) => {
           addOtchet={AddOtchetHandler}
         />
       </div>
-      <h3>Отчет на моята работа</h3>
+      <h4>Отчет на моята работа</h4>
       <div className={styles.otcheti}>
         {currOtchet.length > 0 ? (
           <div className={styles.container}>
@@ -68,7 +68,7 @@ const TicketOtchet: React.FC<TicketOtchetProps> = ({ otcheti, cobjTicket }) => {
             })}
           </div>
         ) : (
-          <h3>Няма извършена работа по тази задача</h3>
+          <h5>Няма извършена работа по тази задача</h5>
         )}
       </div>
     </div>

@@ -3,6 +3,8 @@ import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import userReducer from "./features/userSlice";
 import activeTicketReducer from "./features/ticketSlice";
 import notificationReducer from "./features/notificationSlice";
+import settingsReducer from "./features/settignsSlice";
+
 import {
   persistStore,
   persistReducer,
@@ -16,7 +18,7 @@ import {
 import storage from "redux-persist/lib/storage";
 
 const persistConfig = {
-  key: "root", // root key
+  key: "root",
   storage,
 };
 
@@ -26,6 +28,7 @@ const persistedReducer = persistReducer(
     user: userReducer,
     activeTicket: activeTicketReducer,
     notifications: notificationReducer,
+    settings: settingsReducer,
   })
 );
 

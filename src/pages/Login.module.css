@@ -56,13 +56,13 @@ button:hover {
   background-color: var(--purple-hover-color);
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 1080px) {
   form {
     width: 60%;
   }
 }
 
-@media (max-width: 775px) {
+@media (max-width: 800px) {
   form {
     width: 90%;
   }

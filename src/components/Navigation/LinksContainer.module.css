@@ -1,0 +1,43 @@
+.linksContainer {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  padding-right: 20px;
+  gap: 25px;
+  height: 100%;
+}
+
+@media (max-width: 800px) {
+  .linksContainer {
+    flex-direction: column;
+    padding: 0px;
+  }
+}
+
+.linksContainer a {
+  text-decoration: none;
+  font-size: 18px;
+}
+
+.active {
+  color: var(--purple-color);
+}
+
+.active:hover {
+  color: var(--purple-hover-color);
+}
+
+.loginlink {
+  padding: 10px 20px;
+  border-radius: 25px;
+  background-color: var(--purple-color);
+  color: white;
+}
+
+.loginlink:hover {
+  background-color: var(--purple-hover-color);
+}
+
+.modeChange {
+  margin-right: 20px;
+}

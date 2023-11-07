@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import NavBar from "./components/Navigation/NavBar";
 import styles from "./App.module.css";
 import { Route, Routes } from "react-router-dom";
@@ -10,17 +10,18 @@ import AuthGuard from "./guard/AuthGuard";
 import NotificationsList from "./components/Notifications/NotificationsList";
 import PageNotFound from "./pages/PageNotFound";
 import TicketDetailsPage from "./pages/TicketDetailsPage";
+import { useSelector } from "react-redux";
+import { RootState } from "./app/Store";
 
 const App: React.FC = () => {
-  const [darkTheme, setDarkTheme] = useState(true);
-
+  const darkTheme = useSelector((state: RootState) => state.settings.darkMode);
   const activeTheme = darkTheme ? "" : "light-mode";
 
   return (
     <>
       <NotificationsList />
       <main className={`${styles.app} ${styles[activeTheme]}`}>
-        <NavBar darkTheme={darkTheme} changeTheme={setDarkTheme} />
+        <NavBar />
         <Routes>
           <Route path="/" element={<Home />} />
 

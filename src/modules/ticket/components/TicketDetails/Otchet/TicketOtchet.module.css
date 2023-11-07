@@ -7,18 +7,10 @@
   max-height: calc(100vh - 130px);
 }
 
-.container p {
-  font-size: 15px;
-  margin-bottom: 10px;
-}
-
-.container h3 {
+.container h4,
+h5 {
   text-align: center;
-}
-
-.container h2,
-h3 {
-  font-size: 18px;
+  font-size: 15px;
   color: var(--text-color);
   padding-bottom: 5px;
 }

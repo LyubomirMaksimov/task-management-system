@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import styles from "./MobileMenu.module.css";
+import LinksContainer from "./LinksContainer";
 
 interface MobileMenuProps {
   show: boolean;
@@ -14,19 +15,12 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ show, setShow }) => {
     setShow(false);
   };
 
-  const ConfirmPostHandler = () => {
-    setShow(false);
-  };
-
   return ReactDOM.createPortal(
     <div className={styles.modal}>
       <div className={styles.overlay} onClick={GoBackHandler}></div>
+
       <div className={styles.content}>
-        <h3>Създай нов отчет</h3>
-        <div className={styles.contentButtons}>
-          <button onClick={ConfirmPostHandler}>Изпрати отчета</button>
-          <button onClick={GoBackHandler}>Назад</button>
-        </div>
+        <LinksContainer mobile={true} onChoose={GoBackHandler} />
       </div>
     </div>,
     document.getElementById("modal-root") as HTMLElement

@@ -22,6 +22,7 @@
   font-weight: bold;
   color: var(--paragraph-color);
   margin: 15px;
+  align-self: start;
 }
 
 .filter {
@@ -129,6 +130,30 @@
 
 @media (max-width: 800px) {
   .sidebar {
+    width: 100%;
+  }
+
+  .filter-container {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .filter-container p {
+    display: inline;
+  }
+
+  .filter {
+    width: 45%;
+  }
+
+  .hide-sidebar {
     display: none;
+  }
+}
+
+@media (max-width: 460px) {
+  .filter {
+    font-size: 12px;
+    overflow: hidden;
   }
 }

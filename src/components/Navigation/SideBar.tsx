@@ -36,8 +36,8 @@ const Sidebar: React.FC<SideBarProps> = ({ showSideBar, toggleSideBar }) => {
 
   return (
     <div className={toggleClass}>
+      <p className={styles.filtertitle}>ФИЛТЪР ПО СТАТУС:</p>
       <div className={styles["filter-container"]}>
-        <p className={styles.filtertitle}>ФИЛТЪР ПО СТАТУС:</p>
         {activeTicket.cobjTicket !== 0 && (
           <button
             className={`${styles.filter} ${styles.activeTicket}`}
@@ -94,10 +94,8 @@ const Sidebar: React.FC<SideBarProps> = ({ showSideBar, toggleSideBar }) => {
       </div>
       <div className={styles["hide-sidebar"]} onClick={toggleSideBar}>
         <img src={ImgHide} alt="Hide Sidebar" />
-        {/* <ImgHide /> */}
         <p>Hide Sidebar</p>
       </div>
-      {/* <div className={styles["settings-container"]}></div> */}
     </div>
   );
 };
