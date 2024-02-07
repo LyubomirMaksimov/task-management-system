@@ -1,26 +1,55 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
 import styles from "./ButtonCointainer.module.css";
 import ConfirmButtonModal from "./ConfirmButtonModal";
-
+import useChangeTicketStatus from "../../modules/ticket/hooks/useChangeTicketStatus";
+import useChangeHelperTicketStatus from "../../modules/ticket/hooks/useChangeHelperTicketStatus";
+import { RootState } from "../../app/Store";
 interface ButtonsContainerProps {
   type: number; // 1 - Ръководител, 2- Помощник
   ticketStatus: number; // Статус на тикета.
   ticketLevel?: number; // Статус на тикета
+  nHelperRow?: number; // ред на помощника (ако се показват бутони на помищник)
 }
 
 const ButtonsContainer: React.FC<ButtonsContainerProps> = ({
   type,
   ticketStatus,
   ticketLevel = 0,
+  nHelperRow = 0,
 }) => {
   const [showModal, setShowModal] = useState<boolean>(false);
   const [question, setQuestion] = useState<string>("");
   const [newStatus, setNewStatus] = useState<number>(0);
+
+  const user = useSelector((state: RootState) => state.user);
+  const { id } = useParams();
+
+  const objRakRequest = {
+    params: [
+      user.nUser,
+      // id?.split("-")[0] as string,
+      id?.split("-")[1] as string,
+      newStatus,
+      user.userAccToken,
+
+      // Number(params[0]), // nUser
+      // Number(params[1]), // nUserTicket
+      // Number(params[2]), // nNewStatus
+      // String(params[3]), // userAccToken
+    ],
+  };
+
+  const { responseMessage: responseRakMessage, fetchChangeTicketStatus } =
+    useChangeTicketStatus(objRakRequest);
+
   let buttons;
 
-  const ConfirmButtonHandler = () => {
+  const ConfirmRakButtonHandler = () => {
     setShowModal(false);
-    console.log(`Status changed to ${newStatus}`);
+    fetchChangeTicketStatus();
+    console.log(responseRakMessage);
   };
 
   const CancelButtonHandler = () => {
@@ -41,7 +70,7 @@ const ButtonsContainer: React.FC<ButtonsContainerProps> = ({
             key={1}
             className={styles.GreenButton}
             onClick={() => {
-              setNewStatus(1);
+              setNewStatus(2);
               ShowButtonModal(
                 "Потвърдете, че ПРИЕМАТЕ изпълнението на задачата:"
               );
@@ -112,7 +141,7 @@ const ButtonsContainer: React.FC<ButtonsContainerProps> = ({
             key={1}
             className={styles.YellowButton}
             onClick={() => {
-              setNewStatus(1);
+              setNewStatus(2);
               ShowButtonModal(
                 "Потвърдете, че искате да върнете задачата обратно ЗА ИЗПЪЛНЕНИЕ:"
               );
@@ -133,83 +162,15 @@ const ButtonsContainer: React.FC<ButtonsContainerProps> = ({
     return buttons;
   };
 
-  const HelperButtons = (ticketStatus: number) => {
-    let buttons: JSX.Element[] = [];
-    switch (ticketStatus) {
-      case 1: //Очаква приемане
-      case 2: //Приет за изпълнение
-        buttons = [
-          <button
-            key={1}
-            className={styles.RedButton}
-            onClick={() => {
-              setNewStatus(12);
-              ShowButtonModal(
-                "Потвърдете ПРЕКРАТЯВАНЕТО на задачата на помощника:"
-              );
-            }}
-          >
-            Прекрати
-          </button>,
-        ];
-        break;
-      case 3: // Изпълнен за одобрение
-        buttons = [
-          <button
-            key={1}
-            className={styles.YellowButton}
-            onClick={() => {
-              setNewStatus(1);
-              ShowButtonModal(
-                "Потвърдете, че искате да върнете задачата на помощника ОБРАТНО ЗА ИЗПЪЛНЕНИЕ:"
-              );
-            }}
-          >
-            Върни за изпълнение
-          </button>,
-          <button
-            key={2}
-            className={styles.GreenButton}
-            onClick={() => {
-              setNewStatus(11);
-              ShowButtonModal(
-                "Потвърдете ПРИКЛЮЧВАНЕТО НА задачата на помощника:"
-              );
-            }}
-          >
-            Приключи тикета
-          </button>,
-        ];
-        break;
-      case 11: // Приключен
-      case 12: // Прекратен
-      case 13: // Отказан
-        buttons = [];
-        break;
-      default:
-        break;
-    }
-    return buttons;
-  };
-
-  switch (type) {
-    case 1:
-      buttons = LeaderButtons(ticketStatus, ticketLevel);
-      break;
-    case 2:
-      buttons = HelperButtons(ticketStatus);
-      break;
-  }
-
   return (
     <div className={styles[`buttons-container`]}>
-      {buttons &&
-        buttons.map((btn) => {
+      {LeaderButtons(ticketStatus, ticketLevel) &&
+        LeaderButtons(ticketStatus, ticketLevel).map((btn) => {
           return btn;
         })}
       <ConfirmButtonModal
         show={showModal}
-        confirm={ConfirmButtonHandler}
+        confirm={ConfirmRakButtonHandler}
         cancel={CancelButtonHandler}
         text={question}
       />

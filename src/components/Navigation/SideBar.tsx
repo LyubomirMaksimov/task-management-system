@@ -42,7 +42,9 @@ const Sidebar: React.FC<SideBarProps> = ({ showSideBar, toggleSideBar }) => {
           <button
             className={`${styles.filter} ${styles.activeTicket}`}
             onClick={() => {
-              navigate(`/tickets/${activeTicket.cobjTicket}`);
+              navigate(
+                `/tickets/${activeTicket.cobjTicketUser}- ${activeTicket.cobjTicket}`
+              );
             }}
           >
             <img src={filterIcon} alt="filterIcon" />

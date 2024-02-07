@@ -1,20 +1,19 @@
 import { useState, useEffect, useRef } from "react";
 import user from "../services/authService.js";
-import { UserType } from "../types/user.js";
+import { UserRequestData } from "../types/user.js";
 
 export interface FetchProps {
   stringService: string;
-  flag: boolean;
   params: (number | string)[];
-  data: UserType | null;
+  data: UserRequestData | null;
   loading: boolean;
   error: Error | null;
   fetchData: () => void;
   abortFetch: () => void;
 }
 
-const useAuth = ({ stringService, flag, params }: FetchProps) => {
-  const [data, setData] = useState<UserType | null>(null);
+const useAuth = ({ stringService, params }: FetchProps) => {
+  const [data, setData] = useState<UserRequestData | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<Error | null>(null);
 
@@ -48,7 +47,7 @@ const useAuth = ({ stringService, flag, params }: FetchProps) => {
             String(params[1]),
             abortControllerRef.current.signal
           )
-          .then((jsonData: UserType) => {
+          .then((jsonData: UserRequestData) => {
             clearTimeout(timeoutId);
 
             if (jsonData) {
@@ -85,10 +84,6 @@ const useAuth = ({ stringService, flag, params }: FetchProps) => {
   };
 
   useEffect(() => {
-    if (flag) {
-      fetchData();
-    }
-
     return () => {
       abortFetch();
     };

@@ -1,17 +1,18 @@
 import { useState, useEffect, useRef } from "react";
-import { ticketFullInfo } from "../types/ticket.js";
 import ticket from "../services/ticketService.js";
 import { useDispatch } from "react-redux";
 import { logout } from "../../../app/features/userSlice.js";
 
-export interface useTicketDetailsProps {
-  flag: boolean;
+export interface useChangeTicketStatusProps {
   params: (number | string)[];
 }
 
-const useTicketDetails = ({ flag, params }: useTicketDetailsProps) => {
-  const [ticketDetailsData, setTicketDetailsData] =
-    useState<ticketFullInfo | null>(null);
+export interface postOtchetResponse {
+  message: string;
+}
+
+const useChangeTicketStatus = ({ params }: useChangeTicketStatusProps) => {
+  const [responseMessage, setResponseMessage] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<Error | null>(null);
   const dispatch = useDispatch();
@@ -23,14 +24,14 @@ const useTicketDetails = ({ flag, params }: useTicketDetailsProps) => {
       abortControllerRef.current.abort();
       setLoading(false);
       setError(new Error("Request aborted"));
-      setTicketDetailsData(null);
+      setResponseMessage("");
     }
   };
 
-  const fetchTicketDetails = async () => {
+  const fetchChangeTicketStatus = async () => {
     setLoading(true);
     setError(null);
-    setTicketDetailsData(null);
+    setResponseMessage("");
 
     abortControllerRef.current = new AbortController();
 
@@ -39,20 +40,20 @@ const useTicketDetails = ({ flag, params }: useTicketDetailsProps) => {
     }, 60000);
 
     await ticket
-      .getTicketDetails(
+      .postChangeTicketStatus(
         Number(params[0]), // nUser
-        Number(params[1]), // nTicketUser
-        Number(params[2]), // cobjTicket
+        Number(params[1]), // nUserTicket
+        Number(params[2]), // nNewStatus
         String(params[3]), // userAccToken
         abortControllerRef.current.signal
       )
-      .then((jsonData) => {
+      .then((jsonData: postOtchetResponse) => {
         clearTimeout(timeoutId);
 
-        const { ticket } = { ...jsonData };
+        const { message } = { ...jsonData };
 
-        if (ticket) {
-          setTicketDetailsData(ticket);
+        if (message) {
+          setResponseMessage(message);
         } else {
           throw new Error("Invalid response data");
         }
@@ -79,16 +80,18 @@ const useTicketDetails = ({ flag, params }: useTicketDetailsProps) => {
   };
 
   useEffect(() => {
-    if (flag) {
-      fetchTicketDetails();
-    }
-
     return () => {
       abortFetch();
     };
   }, []);
 
-  return { ticketDetailsData, loading, error, fetchTicketDetails, abortFetch };
+  return {
+    responseMessage,
+    loading,
+    error,
+    fetchChangeTicketStatus,
+    abortFetch,
+  };
 };
 
-export default useTicketDetails;
+export default useChangeTicketStatus;

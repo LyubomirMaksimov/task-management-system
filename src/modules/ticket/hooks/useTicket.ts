@@ -5,16 +5,15 @@ import { useDispatch } from "react-redux";
 import { logout } from "../../../app/features/userSlice.js";
 
 export interface useTicketProps {
-  flag: boolean;
   params: (number | string)[];
-  ticketsData: RequestTicketsData | null;
-  loading: boolean;
-  error: Error | null;
-  fetchAllTickets: () => void;
-  abortFetch: () => void;
+  // ticketsData: RequestTicketsData | null;
+  // loading: boolean;
+  // error: Error | null;
+  // fetchAllTickets: () => void;
+  // abortFetch: () => void;
 }
 
-const useTicket = ({ flag, params }: useTicketProps) => {
+const useTicket = ({ params }: useTicketProps) => {
   const [ticketsData, setTicketsData] = useState<RequestTicketsData | null>(
     null
   );
@@ -66,7 +65,11 @@ const useTicket = ({ flag, params }: useTicketProps) => {
       .catch((error: Error) => {
         clearTimeout(timeoutId);
 
-        if (error.message === "Error: Неуспешна Аутентикация на потребителя!") {
+        console.log(error);
+        if (
+          error.message === '{"error":"Неуспешна Аутентикация на потребителя!"}'
+        ) {
+          console.log(error.message);
           return dispatch(logout());
         }
 
@@ -81,10 +84,6 @@ const useTicket = ({ flag, params }: useTicketProps) => {
   };
 
   useEffect(() => {
-    if (flag) {
-      fetchAllTickets();
-    }
-
     return () => {
       abortFetch();
     };

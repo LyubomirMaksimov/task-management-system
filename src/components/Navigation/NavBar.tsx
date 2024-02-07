@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import styles from "./NavBar.module.css";
 import TMSLogo from "../../assets/logo-mobile.svg";
 
@@ -7,6 +8,7 @@ import MobileMenu from "./MobileMenu";
 import LinksContainer from "./LinksContainer";
 
 const NavBar: React.FC = () => {
+  const navigate = useNavigate();
   const [showModal, setShowModal] = useState<boolean>(false);
 
   return (
@@ -16,12 +18,12 @@ const NavBar: React.FC = () => {
           src={TMSLogo}
           alt="logo"
           onClick={() => {
-            navigate("/");
+            navigate("/tickets");
           }}
         />
         <p
           onClick={() => {
-            navigate("/");
+            navigate("/tickets");
           }}
         >
           Task Management System
@@ -30,7 +32,6 @@ const NavBar: React.FC = () => {
       <div className={styles.navigation}>
         <LinksContainer mobile={false} onChoose={() => {}} />
       </div>
-
       <div className={styles.hamburger}>
         <GiHamburgerMenu
           onClick={() => {

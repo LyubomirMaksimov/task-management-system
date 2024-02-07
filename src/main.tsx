@@ -5,12 +5,15 @@ import "./index.css";
 import { BrowserRouter } from "react-router-dom";
 import { store } from "./app/Store.tsx";
 import { Provider } from "react-redux";
+import MUICustomStyles from "./utils/MUICustomStyles.js";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <Provider store={store}>
       <BrowserRouter>
-        <App />
+        <MUICustomStyles>
+          <App />
+        </MUICustomStyles>
       </BrowserRouter>
     </Provider>
   </React.StrictMode>

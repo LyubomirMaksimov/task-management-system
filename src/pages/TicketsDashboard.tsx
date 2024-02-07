@@ -14,7 +14,7 @@ const TicketsDashboard: React.FC = () => {
   const toggleClass = showSidebar ? styles.toggleBar : styles.hidetoggleBar;
 
   const containerStyles = {
-    marginLeft: showSidebar ? "-250px" : "0px",
+    marginLeft: showSidebar ? "-260px" : "0px",
   };
 
   return (

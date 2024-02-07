@@ -70,3 +70,9 @@
   margin-bottom: 3px;
   color: var(--text-color);
 }
+
+@media (min-width: 800px) {
+  .modal {
+    display: none;
+  }
+}

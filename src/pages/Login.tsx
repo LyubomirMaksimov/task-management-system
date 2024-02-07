@@ -9,6 +9,7 @@ import { addNotification } from "../app/features/notificationSlice.js";
 import { RootState } from "../app/Store.js";
 
 const Login: React.FC = () => {
+  const [errorShow, setErrorShow] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [usernameError, setUsernameError] = useState("");
@@ -24,7 +25,6 @@ const Login: React.FC = () => {
 
   const objRequest: FetchProps = {
     stringService: "LOGIN",
-    flag: false,
     params: [username, password],
     data: null,
     loading: false,
@@ -73,22 +73,18 @@ const Login: React.FC = () => {
 
   useEffect(() => {
     if (data) {
-      let fullName: string;
-      if (Number(data.userType) === 1) {
-        fullName = `${data.userFirstName} ${data.userSecondName} ${data.userLastName}`;
-      } else {
-        fullName = data.userFirmName;
-      }
+      const userFullName = `${data.userFirstName} ${data.userSecondName} ${data.userLastName}`;
 
       const userData: UserType = {
         nUser: data.nUser,
         userType: data.userType,
         userWorkerType: data.userWorkerType,
-        userFullName: fullName,
-        userBULSTAT: data.userBULSTAT,
-        userEmail: data.userEmail,
-        accToken: data.accToken,
-        refreshToken: data.refreshToken,
+        userFullName: userFullName,
+        userBAZAWorkerType: 0,
+        // userBULSTAT: data.userBULSTAT,
+        // userEmail: data.userEmail,
+        userAccToken: data.accToken,
+        userRefreshToken: data.refreshToken,
         expiresIn: data.expiresIn,
         isAuthenticated: true,
       };
@@ -98,13 +94,15 @@ const Login: React.FC = () => {
       dispatch(
         addNotification({
           id: new Date().getTime(),
-          message: `Welcome, ${fullName}!`,
+          message: `Welcome, ${userFullName}!`,
           type: "success",
         })
       );
     }
 
     if (error) {
+      setErrorShow("Грешно потребителско име или парола!");
+
       dispatch(
         addNotification({
           id: new Date().getTime(),
@@ -124,6 +122,9 @@ const Login: React.FC = () => {
             type="text"
             id="username"
             value={username}
+            onFocus={() => {
+              setErrorShow("");
+            }}
             onChange={handleUsernameChange}
           />
           <span className={styles.error}>{usernameError}</span>
@@ -134,11 +135,16 @@ const Login: React.FC = () => {
             type="password"
             id="password"
             value={password}
+            onFocus={() => {
+              setErrorShow("");
+            }}
             onChange={handlePasswordChange}
           />
           <span className={styles.error}>{passwordError}</span>
         </div>
+
         <button type="submit">Log In</button>
+        {errorShow && <span className={styles.error}>{errorShow}</span>}
       </form>
     </div>
   );

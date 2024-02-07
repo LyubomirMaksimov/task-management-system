@@ -5,6 +5,7 @@
   padding-left: 10px;
   padding-right: 10px;
   max-height: calc(100vh - 130px);
+  min-height: 240px;
 }
 
 .container h4,
@@ -21,10 +22,10 @@ h5 {
   max-height: 82%;
 }
 
-.createOtchet {
+.CreateReport {
   margin: 20px 10px;
 }
 
-.createOtchet button {
+.CreateReport button {
   margin: 5px;
 }

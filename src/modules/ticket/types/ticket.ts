@@ -10,6 +10,7 @@ export interface ticketBasicInfo {
   ticketTask: string;
   ticketBegDate: string;
   ticketEndDate: string;
+  ticketStartWorkDate: string;
   ticketStatus: number;
 }
 
@@ -35,6 +36,7 @@ export interface helper {
   helperTaskEndDate: string;
   helperTaskStatus: number;
   helperTaskSumTime: string;
+  helperOtchets: otchet[];
 }
 
 export interface RequestTicketsData {
@@ -47,6 +49,7 @@ export interface RequestTicketsData {
 export interface ticketFullInfo {
   nomID: number;
   cobjUniqueRow: number;
+  ticketUser: number;
   cobjTicket: number;
   eik: string;
   contragent: string;
@@ -54,6 +57,8 @@ export interface ticketFullInfo {
   ticketTask: string;
   ticketBegDate: string;
   ticketEndDate: string;
+  ticketPriznatDate: string;
+
   ticketStatus: number;
   ticketStatusFinishedDate: number;
   ticketStatusFinishedFrom: string;
@@ -63,6 +68,7 @@ export interface ticketFullInfo {
   ticketPMSDogName: string;
   ticketPMSProjName: string;
   ticketPMSTaskName: string;
+  ticketPMSDeinostName: string;
   ticketPMSTOName: string;
   ticketPMSPlannedHours: number;
   ticketPMSTrader: string;

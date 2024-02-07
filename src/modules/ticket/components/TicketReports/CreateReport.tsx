@@ -1,9 +1,13 @@
 import React, { useState, useRef, useEffect } from "react";
+import { useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
 import ReactDOM from "react-dom";
-import styles from "./CreateOtchet.module.css";
-import { otchet } from "../../../types/ticket";
+import styles from "./CreateReport.module.css";
+import { otchet } from "../../types/ticket";
+import usePostReport from "../../hooks/usePostReport";
+import { RootState } from "../../../../app/Store";
 
-interface ConfirmButtonModalProps {
+interface CreateReportProps {
   show: boolean;
   setShow: (show: boolean) => void;
   addOtchet: (newOtcher: otchet) => void;
@@ -19,14 +23,30 @@ function formatDateTimeAsDDMMYYYYHHmm(date: Date) {
   return `${day}.${month}.${year} ${hours}:${minutes}`;
 }
 
-const ConfirmButtonModal: React.FC<ConfirmButtonModalProps> = ({
+const CreateReport: React.FC<CreateReportProps> = ({
   show,
   setShow,
   addOtchet,
 }) => {
   const [work, setWork] = useState<string>("");
-  const timeRef = useRef<number>(0);
+  const [timeValue, setTimeValue] = useState<number>(0);
   const [character, setCharacter] = useState<number>(0);
+  const user = useSelector((state: RootState) => state.user);
+  const { id } = useParams();
+
+  const CreateReportRequest = {
+    params: [
+      id?.split("-")[0] as string, // nUser
+      id?.split("-")[1] as string, // cobjTicket
+      work, // otchetText
+      timeValue, // otchetTime
+      character, // otchetCharacter
+      user.userAccToken,
+    ],
+  };
+
+  const { responseMessage, fetchPostReport } =
+    usePostReport(CreateReportRequest);
 
   useEffect(() => {
     setWork("");
@@ -40,8 +60,6 @@ const ConfirmButtonModal: React.FC<ConfirmButtonModalProps> = ({
   };
 
   const ConfirmPostHandler = () => {
-    const timeValue = timeRef.current.value;
-
     const newOtchet: otchet = {
       otchetID: Math.ceil(Math.random() * 100),
       otchetDate: formatDateTimeAsDDMMYYYYHHmm(new Date()),
@@ -49,6 +67,9 @@ const ConfirmButtonModal: React.FC<ConfirmButtonModalProps> = ({
       otchetTime: `${timeValue} мин.`,
       otchetCharacter: character,
     };
+
+    fetchPostReport();
+    console.log(responseMessage);
 
     addOtchet(newOtchet);
     setShow(false);
@@ -69,7 +90,10 @@ const ConfirmButtonModal: React.FC<ConfirmButtonModalProps> = ({
         ></textarea>
 
         <p>Работено време(мин.)</p>
-        <input type="number" ref={timeRef} />
+        <input
+          type="number"
+          onChange={(event) => setTimeValue(Number(event.target.value))}
+        />
         <p>Характериситка:</p>
         <select
           value={character}
@@ -89,4 +113,4 @@ const ConfirmButtonModal: React.FC<ConfirmButtonModalProps> = ({
   );
 };
 
-export default ConfirmButtonModal;
+export default CreateReport;

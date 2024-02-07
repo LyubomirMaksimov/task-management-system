@@ -1,6 +1,7 @@
 import React from "react";
 import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
+import { makeStyles } from "@mui/material";
 
 interface PaginationProps {
   activePage: number;
@@ -18,9 +19,20 @@ const PageNavigation: React.FC<PaginationProps> = ({
     setPage(value);
   };
 
+  // const useStyles = makeStyles(() => ({
+  //   ul: {
+  //     "& .MuiPaginationItem-root": {
+  //       color: "#fff",
+  //     },
+  //   },
+  // }));
+
+  // const classes = useStyles();
+
   return (
     <Stack spacing={2}>
       <Pagination
+        // classes={{ ul: classes.ul }}
         count={pagesCount}
         color="primary"
         page={activePage}

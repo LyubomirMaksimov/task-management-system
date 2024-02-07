@@ -22,13 +22,7 @@ const TasksContainer: React.FC = () => {
   };
 
   const objRequest: useTicketProps = {
-    flag: false,
-    params: [user.nUser, filterValue, page, user.accToken],
-    ticketsData: null,
-    loading: false,
-    error: null,
-    fetchAllTickets: () => {},
-    abortFetch: () => {},
+    params: [user.nUser, filterValue, page, user.userAccToken],
   };
 
   const { ticketsData, error, fetchAllTickets } = useTicket(objRequest);
@@ -63,17 +57,16 @@ const TasksContainer: React.FC = () => {
 
   return (
     <div className={styles.container}>
+      {Number(ticketsData?.brTickets) === 0 && (
+        <h1 className={styles.noTickets}>Не са открити тикети от този вид</h1>
+      )}
       <div className={styles.taskcontainer}>
         {ticketsData !== null &&
           ticketsData.tickets.map((ticket) => {
             return <Ticket key={ticket.id} ticket={ticket} />;
           })}
-        {Number(ticketsData?.brTickets) === 0 && (
-          <h1 className={styles.notTickets}>
-            Не са открити тикети от този вид
-          </h1>
-        )}
       </div>
+
       {ticketsData?.brTickets && (
         <div className={styles.pageNavContainer}>
           <PageNavigation

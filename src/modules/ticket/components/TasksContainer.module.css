@@ -15,7 +15,7 @@
   align-content: start;
 }
 
-.notTickets {
+.noTickets {
   color: var(--text-color);
   justify-self: center;
   align-self: center;

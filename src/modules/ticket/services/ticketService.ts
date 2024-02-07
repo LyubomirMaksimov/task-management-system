@@ -5,14 +5,14 @@ const ticket = {
     nUser: number,
     nFilterType: number,
     nPage: number,
-    accToken: string,
+    userAccToken: string,
     signal: AbortSignal
   ) => {
     return fetchData(url.TICKET_GETTICKETS, {
       method: req.METHOD_POST,
       headers: {
         ...req.HEADERS,
-        Authorization: `Bearer ${accToken}`,
+        Authorization: `Bearer ${userAccToken}`,
       },
       body: JSON.stringify({
         nUser,
@@ -26,19 +26,91 @@ const ticket = {
     nUser: number,
     nTicketUser: number,
     cobjTicket: number,
-    accToken: string,
+    userAccToken: string,
     signal: AbortSignal
   ) => {
     return fetchData(url.TICKET_DETAILS, {
       method: req.METHOD_POST,
       headers: {
         ...req.HEADERS,
-        Authorization: `Bearer ${accToken}`,
+        Authorization: `Bearer ${userAccToken}`,
       },
       body: JSON.stringify({
         nUser,
         nTicketUser,
         cobjTicket,
+      }),
+      signal: signal,
+    });
+  },
+
+  postChangeTicketStatus: (
+    nUser: number,
+    nUserTicket: number,
+    nNewStatus: number,
+    userAccToken: string,
+    signal: AbortSignal
+  ) => {
+    return fetchData(url.TICKET_CHANGETICKETSTAUTS, {
+      method: req.METHOD_POST,
+      headers: {
+        ...req.HEADERS,
+        Authorization: `Bearer ${userAccToken}`,
+      },
+      body: JSON.stringify({
+        nUser,
+        nUserTicket,
+        nNewStatus,
+      }),
+      signal: signal,
+    });
+  },
+
+  postChangeHelperTicketStatus: (
+    nUser: number,
+    nUserTicket: number,
+    nHelperNewStatus: number,
+    nHelperRow: number,
+    userAccToken: string,
+    signal: AbortSignal
+  ) => {
+    return fetchData(url.TICKET_CHANGEHELPERTICKETSTAUTS, {
+      method: req.METHOD_POST,
+      headers: {
+        ...req.HEADERS,
+        Authorization: `Bearer ${userAccToken}`,
+      },
+      body: JSON.stringify({
+        nUser,
+        nUserTicket,
+        nHelperNewStatus,
+        nHelperRow,
+      }),
+      signal: signal,
+    });
+  },
+
+  postOtchet: (
+    nUser: number,
+    cobjTicket: number,
+    otchetText: string,
+    otchetTime: number,
+    otchetCharacter: number,
+    userAccToken: string,
+    signal: AbortSignal
+  ) => {
+    return fetchData(url.TICKET_POSTOTCHET, {
+      method: req.METHOD_POST,
+      headers: {
+        ...req.HEADERS,
+        Authorization: `Bearer ${userAccToken}`,
+      },
+      body: JSON.stringify({
+        nUser,
+        cobjTicket,
+        otchetText,
+        otchetTime,
+        otchetCharacter,
       }),
       signal: signal,
     });

@@ -6,8 +6,8 @@ import { RootState } from "../app/Store";
 import useTicketDetails from "../modules/ticket/hooks/useTicketDetails";
 import { useParams } from "react-router-dom";
 import { addNotification } from "../app/features/notificationSlice";
-import TicketOtchet from "../modules/ticket/components/TicketDetails/Otchet/TicketOtchet";
-import TicketHelpers from "../modules/ticket/components/TicketDetails/TicketHelpers";
+import TicketReport from "../modules/ticket/components/TicketReports/TicketReport";
+import TicketHelpers from "../modules/ticket/components/TicketHelpers/TicketHelpers";
 import TicketDetails from "../modules/ticket/components/TicketDetails/TicketDetails";
 
 const TicketDetailsPage: React.FC = () => {
@@ -21,13 +21,8 @@ const TicketDetailsPage: React.FC = () => {
       user.nUser,
       id?.split("-")[0] as string,
       id?.split("-")[1] as string,
-      user.accToken,
+      user.userAccToken,
     ],
-    ticketsData: null,
-    loading: true,
-    error: null,
-    fetchTicketDetails: () => {},
-    abortFetch: () => {},
   };
 
   const { ticketDetailsData, error } = useTicketDetails(objRequest);
@@ -50,9 +45,10 @@ const TicketDetailsPage: React.FC = () => {
         <div className={styles.detailsContainer}>
           <TicketDetails ticket={ticketDetailsData} />
 
-          <TicketOtchet
+          <TicketReport
             otcheti={ticketDetailsData?.otcheti}
             cobjTicket={ticketDetailsData.cobjTicket}
+            ticketStatus={ticketDetailsData.ticketStatus}
           />
           {ticketDetailsData?.helpers.length > 0 && (
             <TicketHelpers helpers={ticketDetailsData?.helpers} />
